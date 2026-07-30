@@ -1,0 +1,4 @@
+- headless=true
+- target.mode=scripted
+- realtime=false
+- output_dir=/tmp/bluerov_pose_action_validation_corrected

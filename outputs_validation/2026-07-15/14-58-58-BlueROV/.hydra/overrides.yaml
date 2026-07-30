@@ -1,0 +1,6 @@
+- headless=true
+- realtime=false
+- segment_duration=1.0
+- include_pitch_stress=false
+- print_interval=25
+- output_dir=/tmp/bluerov-smoke

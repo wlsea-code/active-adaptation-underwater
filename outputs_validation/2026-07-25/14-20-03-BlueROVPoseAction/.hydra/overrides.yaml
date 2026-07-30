@@ -1,0 +1,7 @@
+- stability.pitch_linear_damping=0.07
+- stability.roll_linear_damping=0.07
+- stability.center_of_buoyancy_offset=0.01
+- stability.inertia_diag=[0.21,0.245,0.245]
+- task=BlueROVHeavyExplicit
+- target.mode=interactive
+- headless=false

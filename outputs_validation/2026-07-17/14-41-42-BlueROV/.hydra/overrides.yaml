@@ -1,0 +1,6 @@
+- headless=true
+- target.mode=scripted
+- target.scripted_segment_duration=1.0
+- realtime=false
+- flow.enabled=false
+- output_dir=/tmp/main_gui_command_action_validation

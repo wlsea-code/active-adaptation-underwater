@@ -1,0 +1,7 @@
+- headless=true
+- realtime=false
+- target.mode=scripted
+- target.scripted_segment_duration=3.0
+- flow.enabled=true
+- print_interval=150
+- output_dir=/home/wlsea2/active-adaptation-dev-underwater/outputs_validation/headless-second-target-final

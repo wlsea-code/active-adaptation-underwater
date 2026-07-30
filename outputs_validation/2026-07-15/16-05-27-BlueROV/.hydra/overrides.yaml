@@ -1,0 +1,6 @@
+- headless=true
+- realtime=false
+- target.mode=scripted
+- flow.enabled=true
+- print_interval=300
+- output_dir=/tmp/bluerov-final-scripted

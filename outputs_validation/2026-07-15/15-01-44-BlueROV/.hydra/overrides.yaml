@@ -1,0 +1,6 @@
+- headless=true
+- realtime=false
+- segment_duration=4.0
+- include_pitch_stress=true
+- print_interval=200
+- output_dir=/tmp/bluerov-full-v2

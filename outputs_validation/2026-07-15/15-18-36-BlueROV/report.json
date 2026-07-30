@@ -1,0 +1,152 @@
+{
+  "controller": {
+    "position_kp": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "position_kd": [
+      1.8,
+      1.8,
+      1.8
+    ],
+    "attitude_kp": [
+      1.5,
+      1.5,
+      1.5
+    ],
+    "attitude_kd": [
+      1.2,
+      1.2,
+      1.2
+    ],
+    "max_linear_acceleration": [
+      0.6,
+      0.6,
+      0.6
+    ],
+    "max_angular_acceleration": [
+      0.8,
+      0.8,
+      0.8
+    ],
+    "mass": 0.0,
+    "inertia_diag": [],
+    "use_added_mass": true,
+    "compensate_hydrodynamics": true
+  },
+  "sim_parameters": {
+    "mass": 11.260000228881836,
+    "inertia_b": [
+      [
+        0.04480000212788582,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.04480000212788582,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.04480000212788582
+      ]
+    ],
+    "added_mass": [
+      [
+        5.5,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        12.699999809265137,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        14.569999694824219,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.11999999731779099,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.11999999731779099,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.11999999731779099
+      ]
+    ],
+    "allocator_rank": 5,
+    "step_dt": 0.02
+  },
+  "phases": {
+    "hover": {
+      "tail_position_error_mean_m": 0.024801666624844076,
+      "tail_attitude_error_mean_deg": 0.09104955898761567,
+      "tail_roll_error_mean_deg": 2.7320759774094596e-06,
+      "tail_pitch_error_mean_deg": 0.09104940390763697,
+      "tail_yaw_error_mean_deg": 0.00016506861448375388,
+      "tail_allocation_residual_mean": 0.008061754386872053,
+      "tail_actuation_residual_mean": 1.0533108580112458,
+      "peak_abs_throttle": 0.07500100135803223
+    },
+    "surge": {
+      "tail_position_error_mean_m": 0.10059213280677795,
+      "tail_attitude_error_mean_deg": 22.10538952040718,
+      "tail_roll_error_mean_deg": 2.6503032015681907,
+      "tail_pitch_error_mean_deg": 3.873668684738293,
+      "tail_yaw_error_mean_deg": 21.060827482899757,
+      "tail_allocation_residual_mean": 0.06584563352167606,
+      "tail_actuation_residual_mean": 1.1512537479400635,
+      "peak_abs_throttle": 0.2295716404914856
+    },
+    "heave_yaw": {
+      "tail_position_error_mean_m": 0.08600135862827302,
+      "tail_attitude_error_mean_deg": 9.461825932970857,
+      "tail_roll_error_mean_deg": 6.77949115174732,
+      "tail_pitch_error_mean_deg": 1.4361779483878252,
+      "tail_yaw_error_mean_deg": 6.302910800664115,
+      "tail_allocation_residual_mean": 0.15570116221904753,
+      "tail_actuation_residual_mean": 0.9470286166667938,
+      "peak_abs_throttle": 0.2748652994632721
+    },
+    "pitch_stress": {
+      "tail_position_error_mean_m": 0.031645731441676615,
+      "tail_attitude_error_mean_deg": 37.23041511623756,
+      "tail_roll_error_mean_deg": 19.817175608068332,
+      "tail_pitch_error_mean_deg": 18.2768672049402,
+      "tail_yaw_error_mean_deg": 25.60158409822194,
+      "tail_allocation_residual_mean": 0.13337624043226243,
+      "tail_actuation_residual_mean": 1.0910811018943787,
+      "peak_abs_throttle": 0.12596116960048676
+    }
+  }
+}

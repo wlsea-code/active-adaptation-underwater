@@ -1,0 +1,8 @@
+- headless=true
+- realtime=false
+- target.mode=scripted
+- target.scripted_segment_duration=0.1
+- target.trajectory_duration=2.0
+- flow.enabled=true
+- print_interval=10
+- output_dir=/tmp/bluerov-close-smoke

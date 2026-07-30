@@ -1,0 +1,248 @@
+{
+  "controller": {
+    "position_kp": [
+      0.7,
+      0.7,
+      0.8
+    ],
+    "position_kd": [
+      2.0,
+      2.0,
+      2.2
+    ],
+    "attitude_kp": [
+      8.0,
+      1.0,
+      12.0
+    ],
+    "attitude_kd": [
+      3.0,
+      1.8,
+      3.0
+    ],
+    "max_linear_acceleration": [
+      0.2,
+      0.2,
+      0.2
+    ],
+    "max_angular_acceleration": [
+      1.5,
+      0.4,
+      2.0
+    ],
+    "wrench_weights": [
+      1.0,
+      1.0,
+      1.0,
+      5.0,
+      0.5,
+      5.0
+    ],
+    "control_pitch": false,
+    "mass": 0.0,
+    "inertia_diag": [
+      0.16,
+      0.25,
+      0.3
+    ],
+    "use_added_mass": true,
+    "compensate_hydrodynamics": false
+  },
+  "target": {
+    "mode": "scripted",
+    "prim_path": "/World/BlueROVControlTarget",
+    "initial_offset": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "trajectory_duration": 4.0,
+    "position_change_threshold": 0.002,
+    "orientation_change_threshold_deg": 0.5,
+    "max_duration": 0.0,
+    "scripted_segment_duration": 6.0,
+    "scripted_heave_offset": 0.5,
+    "scripted_yaw_deg": 45.0
+  },
+  "flow": {
+    "enabled": false,
+    "max_velocity": [
+      0.15,
+      0.08,
+      0.03,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "noise_std": [
+      0.02,
+      0.02,
+      0.01,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "stability": {
+    "center_of_buoyancy_offset": 0.06,
+    "roll_linear_damping": 1.8,
+    "pitch_linear_damping": 2.0
+  },
+  "sampled_flow": [
+    -0.0,
+    0.0,
+    -0.0,
+    -0.0,
+    0.0,
+    -0.0
+  ],
+  "sim_parameters": {
+    "mass": 11.260001182556152,
+    "inertia_b": [
+      [
+        0.16,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.25,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.3
+      ]
+    ],
+    "added_mass": [
+      [
+        5.5,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        12.699999809265137,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        14.569999694824219,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.11999999731779099,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.11999999731779099,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.11999999731779099
+      ]
+    ],
+    "allocator_rank": 5,
+    "runtime_thruster_positions_b": [
+      [
+        0.135499969124794,
+        -0.09999997913837433,
+        -0.07249999046325684
+      ],
+      [
+        0.135499969124794,
+        0.09999997913837433,
+        -0.07249999046325684
+      ],
+      [
+        -0.14749997854232788,
+        -0.09999999403953552,
+        -0.07249999046325684
+      ],
+      [
+        -0.14749997854232788,
+        0.09999999403953552,
+        -0.07249999046325684
+      ],
+      [
+        0.002499999711290002,
+        -0.11049999296665192,
+        -0.004999995231628418
+      ],
+      [
+        0.002499999711290002,
+        0.11049999296665192,
+        -0.004999995231628418
+      ]
+    ],
+    "runtime_thruster_directions_b": [
+      [
+        0.7071067215818992,
+        0.7071068407911908,
+        0.0
+      ],
+      [
+        0.7071067215818992,
+        -0.7071068407911908,
+        0.0
+      ],
+      [
+        -0.7071066917795468,
+        0.7071068705935369,
+        0.0
+      ],
+      [
+        -0.7071066917795468,
+        -0.7071068705935369,
+        0.0
+      ],
+      [
+        5.960464832810441e-08,
+        0.0,
+        0.9999999999999982
+      ],
+      [
+        5.960464832810441e-08,
+        0.0,
+        0.9999999999999982
+      ]
+    ],
+    "shared_action_wrapper_thruster_model": true,
+    "command_action_path": true,
+    "step_dt": 0.02
+  },
+  "summary": {
+    "tail_target_position_error_mean_m": 0.1152566573354933,
+    "tail_reference_position_error_mean_m": 0.06574635873238245,
+    "tail_roll_error_mean_deg": 0.08125600399338705,
+    "tail_pitch_error_mean_deg": 0.17878584731766617,
+    "tail_yaw_error_mean_deg": 11.78681677765562,
+    "tail_actuation_residual_mean": 0.6329272692236635,
+    "peak_pitch_error_deg": 2.856430787789407,
+    "peak_angular_speed_rad_s": 0.4040781855583191,
+    "peak_abs_throttle": 0.13428454101085663
+  }
+}

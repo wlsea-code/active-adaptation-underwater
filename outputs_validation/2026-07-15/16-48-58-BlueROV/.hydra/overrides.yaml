@@ -1,0 +1,7 @@
+- headless=true
+- realtime=false
+- target.mode=scripted
+- target.scripted_segment_duration=6.0
+- flow.enabled=false
+- print_interval=200
+- output_dir=/home/wlsea2/active-adaptation-dev-underwater/outputs_validation/leveling-v2-no-flow

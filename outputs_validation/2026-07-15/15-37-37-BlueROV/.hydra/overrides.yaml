@@ -1,0 +1,8 @@
+- headless=true
+- realtime=false
+- target.mode=scripted
+- target.scripted_segment_duration=1.0
+- target.trajectory_duration=2.0
+- flow.enabled=true
+- print_interval=50
+- output_dir=/tmp/bluerov-interactive-flow-on

@@ -1,0 +1,144 @@
+task:
+  name: BlueROVLemniscate
+  viewer:
+    resolution:
+    - 1280
+    - 720
+    lookat:
+    - 0.0
+    - 0.0
+    - 0.0
+    eye:
+    - 4.0
+    - 4.0
+    - 4.0
+  robot:
+    name: bluerov
+  terrain: plane
+  max_episode_length: 2000000000
+  sim:
+    step_dt: 0.02
+    isaac_physics_dt: 0.02
+    mujoco_physics_dt: 0.002
+  observation:
+    policy:
+      command: {}
+      gravity_multistep:
+        steps: 4
+        noise_std: 0.05
+      root_linvel_b:
+        yaw_only: true
+      root_angvel_b: {}
+  reward:
+    navi:
+      survival:
+        weight: 1.0
+  termination:
+    max_episode_length: {}
+  num_envs: 1
+  input:
+    action:
+      _target_: Lemniscate3DTrackingAction
+      action_scaling: 1.0
+      alpha_range:
+      - 1.0
+      - 1.0
+      pose_controller:
+        position_kp:
+        - 0.7
+        - 0.7
+        - 0.8
+        position_kd:
+        - 2.0
+        - 2.0
+        - 2.2
+        attitude_kp:
+        - 8.0
+        - 0.0
+        - 12.0
+        attitude_kd:
+        - 3.0
+        - 0.0
+        - 3.0
+        max_linear_acceleration:
+        - 0.2
+        - 0.2
+        - 0.2
+        max_angular_acceleration:
+        - 1.5
+        - 0.0
+        - 2.0
+      thruster_model:
+        min_rpm: -3900.0
+        max_rpm: 3900.0
+        throttle_deadband: 0.075
+        positive_rpm_slope: 3659.9
+        positive_rpm_intercept: 345.21
+        negative_rpm_slope: 3494.4
+        negative_rpm_intercept: -433.5
+        positive_thrust_coefficients:
+        - 4.7368e-07
+        - -0.00019275
+        - 0.084452
+        negative_thrust_coefficients:
+        - -3.8442e-07
+        - -0.00016186
+        - -0.039139
+        thrust_scale: 9.81
+        nominal_force_constant: 4.4e-07
+        inversion_iterations: 40
+      wrench_weights:
+      - 1.0
+      - 1.0
+      - 1.0
+      - 5.0
+      - 0.5
+      - 5.0
+      wrench_command_mask:
+      - 1.0
+      - 1.0
+      - 1.0
+      - 1.0
+      - 0.0
+      - 1.0
+      reaction_torque_per_thrust: 0.0
+      allocation_damping: 1.0e-06
+      gravity_w:
+      - 0.0
+      - 0.0
+      - -9.81
+      use_added_mass: true
+      compensate_hydrodynamics: false
+      mass: null
+      inertia_b: null
+      base_body_name: base_link
+  command:
+    _target_: Lemniscate3DCommand
+    semi_axis_x: 1.5
+    semi_axis_y: 0.9
+    vertical_amplitude: 0.45
+    period: 45.0
+    entry_duration: 6.0
+    initial_phase: 0.0
+    direction: 1.0
+    curve_yaw_offset: 0.0
+    rpy_offset:
+    - 0.0
+    - 0.0
+    - 0.0
+    heading_mode: tangent_yaw
+  record_video: ${..record_video}
+headless: false
+backend: isaac
+device: cuda
+app:
+  headless: false
+  enable_cameras: ${..record_video}
+seed: 42
+realtime: false
+max_duration: 0.5
+print_interval: 100
+curve_samples: 241
+trail_length: 1500
+record_video: false
+output_dir: ''

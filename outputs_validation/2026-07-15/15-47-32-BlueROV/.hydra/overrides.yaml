@@ -1,0 +1,6 @@
+- headless=false
+- realtime=false
+- target.mode=interactive
+- target.max_duration=1.0
+- flow.enabled=false
+- output_dir=/tmp/bluerov-interactive-gui-debug

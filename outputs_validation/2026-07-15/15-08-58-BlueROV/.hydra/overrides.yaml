@@ -1,0 +1,6 @@
+- headless=true
+- realtime=false
+- segment_duration=0.2
+- include_pitch_stress=false
+- print_interval=10
+- output_dir=/tmp/bluerov-shared-model-smoke

@@ -1,0 +1,6 @@
+- headless=false
+- realtime=true
+- target.mode=interactive
+- target.max_duration=2.0
+- flow.enabled=true
+- output_dir=/home/wlsea2/active-adaptation-dev-underwater/outputs_validation/gui-smoke-final

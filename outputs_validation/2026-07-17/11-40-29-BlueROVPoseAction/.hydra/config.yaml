@@ -1,0 +1,174 @@
+task:
+  name: BlueROV1
+  viewer:
+    resolution:
+    - 1280
+    - 720
+    lookat:
+    - 0.0
+    - 0.0
+    - 0.0
+    eye:
+    - 4.0
+    - 4.0
+    - 4.0
+  robot:
+    name: bluerov
+  terrain: plane
+  num_envs: 1
+  max_episode_length: 2000000000
+  sim:
+    step_dt: 0.02
+    isaac_physics_dt: 0.02
+    mujoco_physics_dt: 0.002
+  input:
+    action:
+      _target_: underwater_control.BlueROVPoseTrackingAction
+      action_scaling: 1.0
+      alpha_range:
+      - 1.0
+      - 1.0
+      pose_controller:
+        position_kp:
+        - 0.7
+        - 0.7
+        - 0.8
+        position_kd:
+        - 2.0
+        - 2.0
+        - 2.2
+        attitude_kp:
+        - 8.0
+        - 0.0
+        - 12.0
+        attitude_kd:
+        - 3.0
+        - 0.0
+        - 3.0
+        max_linear_acceleration:
+        - 0.2
+        - 0.2
+        - 0.2
+        max_angular_acceleration:
+        - 1.5
+        - 0.0
+        - 2.0
+      thruster_model:
+        min_rpm: -3900.0
+        max_rpm: 3900.0
+        throttle_deadband: 0.075
+        positive_rpm_slope: 3659.9
+        positive_rpm_intercept: 345.21
+        negative_rpm_slope: 3494.4
+        negative_rpm_intercept: -433.5
+        positive_thrust_coefficients:
+        - 4.7368e-07
+        - -0.00019275
+        - 0.084452
+        negative_thrust_coefficients:
+        - -3.8442e-07
+        - -0.00016186
+        - -0.039139
+        thrust_scale: 9.81
+        inversion_iterations: 40
+      wrench_weights:
+      - 1.0
+      - 1.0
+      - 1.0
+      - 5.0
+      - 0.5
+      - 5.0
+      wrench_command_mask:
+      - 1.0
+      - 1.0
+      - 1.0
+      - 1.0
+      - 0.0
+      - 1.0
+      reaction_torque_per_thrust: 0.0
+      allocation_damping: 1.0e-06
+      gravity_w:
+      - 0.0
+      - 0.0
+      - -9.81
+      use_added_mass: true
+      compensate_hydrodynamics: false
+      mass: null
+      inertia_b: null
+      base_body_name: base_link
+  command:
+    _target_: underwater_control.PoseReferenceCommand
+    position_offset_b:
+    - 1.0
+    - 0.0
+    - 0.0
+    rpy_offset:
+    - 0.0
+    - 0.0
+    - 0.0
+    trajectory_duration: 4.0
+  observation:
+    policy:
+      command: {}
+      gravity_multistep:
+        steps: 4
+        noise_std: 0.05
+      root_linvel_b:
+        yaw_only: true
+      root_angvel_b: {}
+  reward:
+    navi:
+      survival:
+        weight: 1.0
+  termination:
+    max_episode_length: {}
+  record_video: ${..record_video}
+headless: true
+backend: isaac
+device: cuda
+app:
+  headless: ${..headless}
+  enable_cameras: ${..record_video}
+seed: 42
+record_video: false
+realtime: false
+print_interval: 100
+output_dir: /tmp/bluerov_pose_action_validation
+target:
+  mode: scripted
+  prim_path: /World/BlueROVControlTarget
+  initial_offset:
+  - 1.0
+  - 0.0
+  - 0.0
+  trajectory_duration: 4.0
+  position_change_threshold: 0.002
+  orientation_change_threshold_deg: 0.5
+  max_duration: 0.0
+  scripted_segment_duration: 1.0
+  scripted_heave_offset: 0.5
+  scripted_yaw_deg: 45.0
+flow:
+  enabled: false
+  max_velocity:
+  - 0.15
+  - 0.08
+  - 0.03
+  - 0.0
+  - 0.0
+  - 0.0
+  noise_std:
+  - 0.02
+  - 0.02
+  - 0.01
+  - 0.0
+  - 0.0
+  - 0.0
+stability:
+  inertia_diag:
+  - 0.16
+  - 0.25
+  - 0.3
+  center_of_buoyancy_offset: 0.06
+  roll_linear_damping: 1.8
+  pitch_linear_damping: 2.0

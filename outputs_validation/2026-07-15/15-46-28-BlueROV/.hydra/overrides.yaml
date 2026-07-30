@@ -1,0 +1,8 @@
+- headless=false
+- realtime=true
+- target.mode=interactive
+- target.max_duration=3.0
+- target.trajectory_duration=3.0
+- flow.enabled=true
+- print_interval=50
+- output_dir=/tmp/bluerov-interactive-gui

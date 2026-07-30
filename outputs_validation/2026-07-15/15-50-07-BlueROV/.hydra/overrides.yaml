@@ -1,0 +1,8 @@
+- headless=true
+- realtime=false
+- target.mode=scripted
+- target.scripted_segment_duration=6.0
+- target.trajectory_duration=3.0
+- flow.enabled=false
+- print_interval=300
+- output_dir=/tmp/bluerov-smooth-underactuated

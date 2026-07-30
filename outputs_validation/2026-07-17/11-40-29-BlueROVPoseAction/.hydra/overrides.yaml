@@ -1,0 +1,6 @@
+- headless=true
+- target.mode=scripted
+- target.scripted_segment_duration=1.0
+- realtime=false
+- flow.enabled=false
+- output_dir=/tmp/bluerov_pose_action_validation
