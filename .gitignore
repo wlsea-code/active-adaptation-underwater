@@ -187,6 +187,7 @@ artifacts/
 # assets
 *.ipynb
 *.mp4
+*.[uU][sS][dD]
 
 # local scripts
 scripts/*.png
