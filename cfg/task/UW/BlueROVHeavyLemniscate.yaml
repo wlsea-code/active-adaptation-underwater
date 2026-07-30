@@ -1,0 +1,27 @@
+# @package task
+defaults:
+  - /task/UW/BlueROVHeavyControlBase@_here_
+  - _self_
+
+name: BlueROVHeavyLemniscate
+max_episode_length: 3500
+
+robot:
+  name: bluerov_heavy
+
+input:
+  action:
+    _target_: BlueROVHeavyLemniscateTrackingAction
+
+command:
+  _target_: Lemniscate3DCommand
+  semi_axis_x: 1.5
+  semi_axis_y: 0.9
+  vertical_amplitude: 0.45
+  period: 45.0
+  entry_duration: 6.0
+  initial_phase: 0.0
+  direction: 1.0
+  curve_yaw_offset: 0.0
+  rpy_offset: [0.0, 0.0, 0.0]
+  heading_mode: tangent_yaw

@@ -13,7 +13,16 @@ from .joint import (
     JointVelocity,
 )
 from .marker import Marker
-from .underwater import UnderwaterThrottle
+from .underwater import (
+    BlueROVHeavyArmLemniscateTrackingAction,
+    BlueROVHeavyArmPoseTrackingAction,
+    BlueROVHeavyLemniscateTrackingAction,
+    BlueROVHeavyPoseTrackingAction,
+    BlueROVPoseTrackingAction,
+    Lemniscate3DTrackingAction,
+    PoseReferenceTrackingActionBase,
+    UnderwaterThrottle,
+)
 from .write import WriteJointPosition, WriteRootState
 
 __all__ = [
@@ -28,6 +37,13 @@ __all__ = [
     "CorrelatedJointPosition",
     "JointVelocity",
     "UnderwaterThrottle",
+    "BlueROVHeavyArmLemniscateTrackingAction",
+    "BlueROVHeavyArmPoseTrackingAction",
+    "BlueROVHeavyLemniscateTrackingAction",
+    "BlueROVHeavyPoseTrackingAction",
+    "BlueROVPoseTrackingAction",
+    "Lemniscate3DTrackingAction",
+    "PoseReferenceTrackingActionBase",
     "Marker",
     "WriteRootState",
     "WriteJointPosition",

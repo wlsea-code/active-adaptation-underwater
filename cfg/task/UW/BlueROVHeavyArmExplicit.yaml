@@ -1,0 +1,24 @@
+# @package task
+defaults:
+  - /task/UW/BlueROVHeavyControlBase@_here_
+  - _self_
+
+name: BlueROVHeavyArmExplicit
+
+robot:
+  name: bluerov_heavy_arm
+
+input:
+  action:
+    _target_: BlueROVHeavyArmPoseTrackingAction
+    mass: 15.034278
+    inertia_b:
+      - [0.364470680, -0.000378838, 0.004664587]
+      - [-0.000378838, 0.449679313, 0.000097536]
+      - [0.004664587, 0.000097536, 0.305379964]
+
+command:
+  _target_: PoseReferenceCommand
+  position_offset_b: [1.0, 0.0, 0.0]
+  rpy_offset: [0.0, 0.0, 0.0]
+  trajectory_duration: 4.0

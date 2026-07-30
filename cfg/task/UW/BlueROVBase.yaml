@@ -1,0 +1,33 @@
+# @package task
+name: BlueROVBase
+
+viewer:
+  resolution: [1280, 720]
+  lookat: [0.0, 0.0, 0.0]
+  eye: [4.0, 4.0, 4.0]
+
+robot:
+  name: bluerov
+
+terrain: plane
+
+max_episode_length: 1000
+
+sim:
+  step_dt: 0.02
+  isaac_physics_dt: 0.02
+  mujoco_physics_dt: 0.002
+
+observation:
+  policy:
+    command: {}
+    gravity_multistep: {steps: 4, noise_std: 0.05}
+    root_linvel_b: {yaw_only: true}
+    root_angvel_b: {}
+
+reward:
+  navi:
+    survival: {weight: 1.0}
+
+termination:
+  max_episode_length: {}

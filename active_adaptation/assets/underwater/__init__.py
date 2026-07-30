@@ -1,4 +1,3 @@
-from . import BlueROV
-from . import BlueROVHeavy
+from . import BlueROV, BlueROVHeavy, BlueROVHeavyArm
 
-__all__ = ["BlueROV", "BlueROVHeavy"]
+__all__ = ["BlueROV", "BlueROVHeavy", "BlueROVHeavyArm"]

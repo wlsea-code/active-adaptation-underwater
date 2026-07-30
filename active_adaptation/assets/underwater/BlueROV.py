@@ -4,6 +4,7 @@ import math
 from pathlib import Path
 from typing import Literal
 
+from active_adaptation.control.thruster import BlueROVThrusterModel, ThrusterModelCfg
 from active_adaptation.envs.robots.underwater import HydrodynamicsCfg, UnderwaterRobot
 from active_adaptation.registry import Registry
 from active_adaptation import ROBOT_MODEL_DIR
@@ -27,6 +28,20 @@ ROTOR_TIME_CONSTANTS = {f"rotor_{i}": 0.01 for i in range(NUM_ROTORS)}
 ROTOR_FORCE_CONSTANTS = {f"rotor_{i}": 4.4e-07 for i in range(NUM_ROTORS)}
 ROTOR_MAX_ROTATION_VEL_RPM = (3900.0,) * 6
 ROTOR_MOMENT_CONSTANTS = (1.3677728816219314e-09,) * 6
+THRUSTER_MODEL_CFG = ThrusterModelCfg(
+    min_rpm=-3900.0,
+    max_rpm=3900.0,
+    throttle_deadband=0.075,
+    positive_rpm_slope=3659.9,
+    positive_rpm_intercept=345.21,
+    negative_rpm_slope=3494.4,
+    negative_rpm_intercept=-433.50,
+    positive_thrust_coefficients=(4.7368e-7, -1.9275e-4, 8.4452e-2),
+    negative_thrust_coefficients=(-3.8442e-7, -1.6186e-4, -3.9139e-2),
+    thrust_scale=9.81,
+    nominal_force_constant=4.4e-7,
+    inversion_iterations=40,
+)
 ROTOR_MAX_ROTATION_VEL_RAD_S = tuple(
     rpm * 2.0 * math.pi / 60.0 for rpm in ROTOR_MAX_ROTATION_VEL_RPM
 )
@@ -102,6 +117,7 @@ def make_isaaclab_cfg(self_collisions: bool = False):
             ),
             rotor_time_constants=ROTOR_TIME_CONSTANTS,
             rotor_force_constants=ROTOR_FORCE_CONSTANTS,
+            thruster_model=BlueROVThrusterModel(THRUSTER_MODEL_CFG),
         ),
     )
 

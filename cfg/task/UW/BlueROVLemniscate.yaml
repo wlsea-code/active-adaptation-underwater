@@ -1,0 +1,59 @@
+# @package task
+defaults:
+  - /task/UW/BlueROVBase@_here_
+  - _self_
+
+name: BlueROVLemniscate
+
+# The bounded active-set allocator currently solves each environment separately.
+num_envs: 1
+max_episode_length: 3500
+
+input:
+  action:
+    _target_: Lemniscate3DTrackingAction
+    action_scaling: 1.0
+    alpha_range: [1.0, 1.0]
+    pose_controller:
+      position_kp: [0.7, 0.7, 0.8]
+      position_kd: [2.0, 2.0, 2.2]
+      attitude_kp: [8.0, 0.0, 12.0]
+      attitude_kd: [3.0, 0.0, 3.0]
+      max_linear_acceleration: [0.2, 0.2, 0.2]
+      max_angular_acceleration: [1.5, 0.0, 2.0]
+    thruster_model:
+      min_rpm: -3900.0
+      max_rpm: 3900.0
+      throttle_deadband: 0.075
+      positive_rpm_slope: 3659.9
+      positive_rpm_intercept: 345.21
+      negative_rpm_slope: 3494.4
+      negative_rpm_intercept: -433.50
+      positive_thrust_coefficients: [4.7368e-7, -1.9275e-4, 8.4452e-2]
+      negative_thrust_coefficients: [-3.8442e-7, -1.6186e-4, -3.9139e-2]
+      thrust_scale: 9.81
+      nominal_force_constant: 4.4e-7
+      inversion_iterations: 40
+    wrench_weights: [1.0, 1.0, 1.0, 5.0, 0.5, 5.0]
+    wrench_command_mask: [1.0, 1.0, 1.0, 1.0, 0.0, 1.0]
+    reaction_torque_per_thrust: 0.0
+    allocation_damping: 1.0e-6
+    gravity_w: [0.0, 0.0, -9.81]
+    use_added_mass: true
+    compensate_hydrodynamics: false
+    mass: null
+    inertia_b: null
+    base_body_name: base_link
+
+command:
+  _target_: Lemniscate3DCommand
+  semi_axis_x: 1.5
+  semi_axis_y: 0.9
+  vertical_amplitude: 0.45
+  period: 45.0
+  entry_duration: 6.0
+  initial_phase: 0.0
+  direction: 1.0
+  curve_yaw_offset: 0.0
+  rpy_offset: [0.0, 0.0, 0.0]
+  heading_mode: tangent_yaw

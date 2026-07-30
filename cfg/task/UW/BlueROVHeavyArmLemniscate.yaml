@@ -1,0 +1,32 @@
+# @package task
+defaults:
+  - /task/UW/BlueROVHeavyControlBase@_here_
+  - _self_
+
+name: BlueROVHeavyArmLemniscate
+max_episode_length: 3500
+
+robot:
+  name: bluerov_heavy_arm
+
+input:
+  action:
+    _target_: BlueROVHeavyArmLemniscateTrackingAction
+    mass: 15.034278
+    inertia_b:
+      - [0.364470680, -0.000378838, 0.004664587]
+      - [-0.000378838, 0.449679313, 0.000097536]
+      - [0.004664587, 0.000097536, 0.305379964]
+
+command:
+  _target_: Lemniscate3DCommand
+  semi_axis_x: 1.5
+  semi_axis_y: 0.9
+  vertical_amplitude: 0.45
+  period: 45.0
+  entry_duration: 6.0
+  initial_phase: 0.0
+  direction: 1.0
+  curve_yaw_offset: 0.0
+  rpy_offset: [0.0, 0.0, 0.0]
+  heading_mode: tangent_yaw

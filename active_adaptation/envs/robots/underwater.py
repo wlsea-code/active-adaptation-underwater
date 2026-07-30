@@ -9,6 +9,7 @@ from typing import Dict, Sequence, TYPE_CHECKING
 import torch
 from tensordict import TensorDictBase
 
+from active_adaptation.control.thruster import BlueROVThrusterModel
 from active_adaptation.utils.math import euler_from_quat, quat_rotate, quat_rotate_inverse
 try:
     import isaaclab.utils.string as string_utils
@@ -87,12 +88,14 @@ class UnderwaterRobot:
         cfg: HydrodynamicsCfg,
         rotor_time_constants: Dict[str, float],
         rotor_force_constants: Dict[str, float],
+        thruster_model: BlueROVThrusterModel,
         robot: "Articulation | None" = None,
         env: "_EnvBase | None" = None,
     ):
         self.cfg = cfg
         self._rotor_time_constants = dict(rotor_time_constants)
         self._rotor_force_constants = dict(rotor_force_constants)
+        self.thruster_model = thruster_model
         self.robot = None
         self.env = None
         self.dt = None
@@ -295,29 +298,13 @@ class UnderwaterRobot:
         self.data.throttle.copy_(
             alpha_rotor * self.data.throttle + (1.0 - alpha_rotor) * target_throttle
         )
-        target_rpm = torch.where(
-            self.data.throttle > 0.075,
-            3.6599e3 * self.data.throttle + 3.4521e2,
-            torch.where(
-                self.data.throttle < -0.075,
-                3.4944e3 * self.data.throttle - 4.3350e2,
-                torch.zeros_like(self.data.throttle),
-            ),
+        self.data.rpm.copy_(
+            self.thruster_model.throttle_to_rpm(self.data.throttle)
         )
-        self.data.rpm.copy_(torch.clamp(target_rpm, -3900.0, 3900.0))
         rotor_thrust_force_x = (
             self.data.force_constants
-            / 4.4e-7
-            * 9.81
-            * torch.where(
-                self.data.rpm > 0,
-                4.7368e-7 * torch.square(self.data.rpm)
-                - 1.9275e-4 * self.data.rpm
-                + 8.4452e-2,
-                -3.8442e-7 * torch.square(self.data.rpm)
-                - 1.6186e-4 * self.data.rpm
-                - 3.9139e-2,
-            )
+            / self.thruster_model.cfg.nominal_force_constant
+            * self.thruster_model.rpm_to_thrust(self.data.rpm)
         )
         self.data.thrusts_b.zero_()
         # Thrust is along local +X axis of each rotor body.
